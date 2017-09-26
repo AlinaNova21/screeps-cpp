@@ -9,7 +9,6 @@ all:
 		-s EXPORTED_FUNCTIONS='["_main","_setup","_loop"]' \
 		-s WASM=1 \
 		-s MODULARIZE=1 \
-		-s EXPORT_ALL=1 \
 		--bind \
 		-O0 \
 		src/wasmtest.cpp \

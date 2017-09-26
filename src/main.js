@@ -12,4 +12,11 @@ const opts = {
 
 const mod = Module(opts);
 mod.ccall('setup');
-module.exports.loop = mod.cwrap('loop')
+module.exports.loop = function(){
+	mod.ccall('loop')
+	console.log(`${Game.cpu.getUsed().toFixed(3)}/${Game.cpu.limit} ${Game.cpu.bucket}`)
+	let intents = _.size(Game.creeps) +  _.size(Game.spawns)
+	let intentCost = intents * 0.2
+	let overhead = Game.cpu.getUsed() - intentCost
+	console.log(intents, intentCost, overhead)
+}

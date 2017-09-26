@@ -31,10 +31,10 @@ extern "C" {
 		for (int i = 0; i < len; i++) {
 			name = names[i].as<std::string>();
 			val creep = creeps[name];
-			printf("%s\n",creep["name"].as<std::string>().c_str());
+			//printf("%s\n",creep["name"].as<std::string>().c_str());
 			int mv = rand() % 8 + 1;
 			creep.call<int>("move",mv);
-			creep.call<int>( "say", creep["name"].as<std::string>());
+			//creep.call<int>( "say", creep["name"].as<std::string>());
 		}
 	}
 
