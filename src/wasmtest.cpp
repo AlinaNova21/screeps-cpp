@@ -5,6 +5,7 @@
 
 using namespace std;
 using namespace emscripten;
+
 extern "C" {
 	EMSCRIPTEN_KEEPALIVE
 	int main() {
@@ -20,7 +21,7 @@ extern "C" {
 	EMSCRIPTEN_KEEPALIVE
 	extern void loop() {
 		val Game = val::global("Game");
-	        printf("Loop %i\n", Game["time"].as<int>());
+	    printf("Loop %i\n", Game["time"].as<int>());
 		EM_ASM(
 			_.each(Game.spawns, s=>s.createCreep([MOVE]))
 		);
@@ -31,16 +32,8 @@ extern "C" {
 		for (int i = 0; i < len; i++) {
 			name = names[i].as<std::string>();
 			val creep = creeps[name];
-			//printf("%s\n",creep["name"].as<std::string>().c_str());
 			int mv = rand() % 8 + 1;
 			creep.call<int>("move",mv);
-			//creep.call<int>( "say", creep["name"].as<std::string>());
 		}
 	}
-
 }
-
-
-/*
-		return;
-*/
